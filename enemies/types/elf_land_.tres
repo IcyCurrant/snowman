@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyTypes" format=3 uid="uid://csu1vdtl4m2as"]
+
+[ext_resource type="Script" uid="uid://yrfrbc4ttabg" path="res://enemies/enemyTypes.gd" id="1_ygh31"]
+[ext_resource type="Texture2D" uid="uid://0rmpud031fpr" path="res://assets/temp_/land_elf.png" id="2_8dkud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8afp8"]
+atlas = ExtResource("2_8dkud")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uayp0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8afp8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_ygh31")
+speed = 10.0
+enemy_hp = 100.0
+firerate = 0.1
+sprite_frames = SubResource("SpriteFrames_uayp0")
+metadata/_custom_type_script = "uid://yrfrbc4ttabg"

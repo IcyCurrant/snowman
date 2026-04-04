@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bvbutntqgn6o3"]
+
+[ext_resource type="PackedScene" uid="uid://w1nrwyudsxdi" path="res://player/player.tscn" id="1_yx7mw"]
+[ext_resource type="Script" uid="uid://w6r7vdkluap" path="res://player/camera.gd" id="2_6bm6p"]
+[ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://levels_/world.tscn" id="2_ykeeq"]
+[ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://main_/enemy_manager.gd" id="4_6bm6p"]
+
+[node name="main_game" type="Node2D" unique_id=324596264]
+
+[node name="TileMapLayer" parent="." unique_id=1212732074 instance=ExtResource("2_ykeeq")]
+z_index = 2
+position = Vector2(0, 50)
+
+[node name="player" parent="." unique_id=701637466 instance=ExtResource("1_yx7mw")]
+position = Vector2(-2, -144)
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=817768848]
+zoom = Vector2(3, 3)
+process_callback = 0
+limit_bottom = 50
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("2_6bm6p")
+
+[node name="enemy_manager" type="Node2D" parent="." unique_id=1065594145]
+position = Vector2(163, -62)
+script = ExtResource("4_6bm6p")
+
+[node name="frequency" type="Timer" parent="enemy_manager" unique_id=378590322]
+autostart = true
+
+[connection signal="timeout" from="enemy_manager/frequency" to="enemy_manager" method="_on_frequency_timeout"]

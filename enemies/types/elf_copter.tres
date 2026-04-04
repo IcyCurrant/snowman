@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="EnemyTypes" format=3 uid="uid://2sl4hawuny3q"]
+
+[ext_resource type="Script" uid="uid://yrfrbc4ttabg" path="res://enemies/enemyTypes.gd" id="1_ygh31"]
+[ext_resource type="Texture2D" uid="uid://c312e8apwvjyh" path="res://assets/elf_copter_sheet.png" id="2_8dkud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52gx0"]
+atlas = ExtResource("2_8dkud")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q36n8"]
+atlas = ExtResource("2_8dkud")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktpsd"]
+atlas = ExtResource("2_8dkud")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7yp3"]
+atlas = ExtResource("2_8dkud")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t3lb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52gx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q36n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktpsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7yp3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[resource]
+script = ExtResource("1_ygh31")
+speed = 30.0
+enemy_hp = 40.0
+firerate = 0.1
+sprite_frames = SubResource("SpriteFrames_3t3lb")
+metadata/_custom_type_script = "uid://yrfrbc4ttabg"
