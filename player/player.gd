@@ -9,6 +9,7 @@ var deccn := 0.2
 var jump_accn := 5.0
 var jump_vel := -300.0
 var slam := false 
+var vel_y : float
 
 #projectile vars
 var projectile_scene := preload("res://projectiles/projectile.tscn") #getting the projectile scene
@@ -36,12 +37,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		vel_y = velocity.y
+		#print(velocity.y)
 		velocity += get_gravity() * delta
 
 	# Handle jump
 	if is_on_floor(): # and not is_jumping:
 		if slam:
-			
 			hitstop(0.05,0.5)
 			create_slam_particles(global_position)
 			animation.play("squash")
@@ -101,7 +103,9 @@ func create_slam_particles(pos: Vector2):
 	var posY = pos.y
 	var ray1 : bool = ray_right.is_colliding()
 	var ray2 : bool = ray_left.is_colliding()
+	
 	posY = posY + 10
+	
 	for i in range(4):
 		
 		#right particles

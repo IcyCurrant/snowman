@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dff7r4gdwom50"]
+
+[ext_resource type="Script" uid="uid://cg0iond58vrbx" path="res://enemies/enemy.gd" id="1_7k104"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4ssu"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fw1ev"]
+size = Vector2(16, 16)
+
+[node name="enemy" type="CharacterBody2D" unique_id=1030144893]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_7k104")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=925759279]
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=1113953809]
+shape = SubResource("RectangleShape2D_x4ssu")
+
+[node name="collArea" type="Area2D" parent="." unique_id=322424887]
+collision_mask = 3
+
+[node name="area_hitbox" type="CollisionShape2D" parent="collArea" unique_id=143713744]
+shape = SubResource("RectangleShape2D_fw1ev")
+
+[node name="firerate_timer" type="Timer" parent="." unique_id=517881224]
+one_shot = true
+
+[node name="left_raycast" type="RayCast2D" parent="." unique_id=1883278599]
+target_position = Vector2(-16, 0)
+
+[node name="right_raycast" type="RayCast2D" parent="." unique_id=1204594433]
+target_position = Vector2(16, 0)
+
+[node name="player_detection" type="RayCast2D" parent="." unique_id=1561659479]
+rotation = 0.43633232
+target_position = Vector2(95.682686, 34.825645)

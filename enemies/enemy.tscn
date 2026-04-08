@@ -9,7 +9,8 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [node name="enemy" type="CharacterBody2D" unique_id=1030144893]
-collision_layer = 2
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_7k104")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=925759279]
@@ -33,4 +34,4 @@ target_position = Vector2(-16, 0)
 target_position = Vector2(16, 0)
 
 [node name="player_detection" type="RayCast2D" parent="." unique_id=1561659479]
-target_position = Vector2(-32, 96)
+target_position = Vector2(248, 96)

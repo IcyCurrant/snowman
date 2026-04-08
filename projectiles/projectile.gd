@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 var velocity_vec :Vector2
 
+signal damage_enemy
+
 func _ready() -> void:
+	print(self.get_path())
 	add_to_group("player_projectile")
 	velocity_vec = (get_global_mouse_position() - global_position) * 4
 
@@ -16,3 +19,10 @@ func _physics_process(delta):
 	
 	if global_position.y > 100:
 		queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body:
+		if not body.is_in_group("player"):
+			damage_enemy.emit()
+			queue_free()

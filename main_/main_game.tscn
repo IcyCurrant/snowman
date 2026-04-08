@@ -5,6 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://levels_/world.tscn" id="2_ykeeq"]
 [ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://main_/enemy_manager.gd" id="4_6bm6p"]
 
+[sub_resource type="Environment" id="Environment_ihtk1"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_exposure = 1.25
+glow_enabled = true
+fog_enabled = true
+
 [node name="main_game" type="Node2D" unique_id=324596264]
 
 [node name="TileMapLayer" parent="." unique_id=1212732074 instance=ExtResource("2_ykeeq")]
@@ -26,10 +33,21 @@ editor_draw_drag_margin = true
 script = ExtResource("2_6bm6p")
 
 [node name="enemy_manager" type="Node2D" parent="." unique_id=1065594145]
-position = Vector2(163, -62)
+position = Vector2(-336, -136)
 script = ExtResource("4_6bm6p")
 
 [node name="frequency" type="Timer" parent="enemy_manager" unique_id=378590322]
 autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1335964648]
+environment = SubResource("Environment_ihtk1")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1392682900]
+color = Color(0.9100639, 0.99975604, 0.9999997, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1803291088]
+rotation = -1.0053097
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="enemy_manager/frequency" to="enemy_manager" method="_on_frequency_timeout"]

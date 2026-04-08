@@ -18,11 +18,16 @@ config/icon="res://main_/icon.svg"
 [autoload]
 
 PlayerData="*uid://dc5w57ou10hoa"
+LayerNames="*uid://onwu1am46l7t"
 
 [editor]
 
 movie_writer/movie_file="E:/snowman/test_.avi"
 version_control/plugin_name="godot-git-plugin"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/layer_namer/plugin.cfg")
 
 [input]
 
@@ -64,3 +69,4 @@ interact={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+viewport/hdr_2d=true
