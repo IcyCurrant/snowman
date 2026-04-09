@@ -35,8 +35,8 @@ func _preload_enemy_types(type: int):
 			enemyType = preload("res://enemies/types/elf_copter.tres")
 
 func _ready() -> void:
-	print(self.get_path())
-	#get_node("/root/snowball").damage_enemy.connect(damage)
+	#print(self.get_path())
+	
 	
 	player_detection.rotation_degrees = 10.0 # set player detection raycat rotation to 10 degrees
 	
@@ -63,6 +63,7 @@ func _ready() -> void:
 	add_to_group("enemy")
 	
 func _physics_process(delta: float) -> void:
+	$Label.text = str(enemy_hp)
 	time += delta * frequency
 	
 	sprite.play("default")
@@ -111,7 +112,10 @@ func _physics_process(delta: float) -> void:
 
 		if player_detection.is_colliding():
 			var collider = player_detection.get_collider() # get the body the player detector raycast is colliding withh
-			if collider.is_in_group("player") and firerate_timer.is_stopped():
+			
+			if collider and collider.is_in_group("player") and firerate_timer.is_stopped():
+				if not collider:
+					queue_free()
 				player_coll = true
 				throw_snowball()
 			else:

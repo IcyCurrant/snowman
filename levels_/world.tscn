@@ -67,8 +67,7 @@ separation = Vector2i(1, 1)
 
 [sub_resource type="TileSet" id="TileSet_tlwt5"]
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 3
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cgjkd")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hco11"]
