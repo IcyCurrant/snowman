@@ -24,7 +24,7 @@ var start_y : float # og y position or in other words the base
 @onready var sprite := $AnimatedSprite2D # sprite
 
 #bullet scene_reference
-@onready var enemy_projectile_scene = preload("res://main_/enemy_projectile.tscn")
+@onready var enemy_projectile_scene = preload("res://projectiles/enemy_projectile/enemy_projectile.tscn")
 var enemy_projectile # instance of bullets
 
 func _preload_enemy_types(type: int):

@@ -12,12 +12,12 @@ var slam := false
 var vel_y : float
 
 #projectile vars
-var projectile_scene := preload("res://projectiles/projectile.tscn") #getting the projectile scene
+var projectile_scene := preload("res://projectiles/player_projectile/projectile.tscn") #getting the projectile scene
 var projectile #instance of projectile
 var firerate := 0.1 #firerate of snowball
 
 #slam particles
-var slam_scene := preload("res://player/slam.tscn") #getting the slam particle scene
+var slam_scene := preload("res://player/player_particles/slam.tscn") #getting the slam particle scene
 var slam_particle # instance of slam particle
 
 #references to nodes
