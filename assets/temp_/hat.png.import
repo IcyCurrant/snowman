@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://85b6m7t35l20"
-path="res://.godot/imported/snowball.png-065706b9cc02592104a50e2415b13eb0.ctex"
+uid="uid://dldb4o7jo232i"
+path="res://.godot/imported/hat.png-9733c33df2d14907fdf0d535494e8b16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/snowball.png"
-dest_files=["res://.godot/imported/snowball.png-065706b9cc02592104a50e2415b13eb0.ctex"]
+source_file="res://assets/temp_/hat.png"
+dest_files=["res://.godot/imported/hat.png-9733c33df2d14907fdf0d535494e8b16.ctex"]
 
 [params]
 

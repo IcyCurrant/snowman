@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dju4c3mkvy2i7"]
 
-[ext_resource type="Texture2D" uid="uid://cs45fra7k5g45" path="res://assets/slam.png" id="1_68fdi"]
-[ext_resource type="Script" uid="uid://c3wmibrextsdf" path="res://player/slam.gd" id="2_ac143"]
+[ext_resource type="Texture2D" uid="uid://cs45fra7k5g45" path="res://assets/temp_/slam.png" id="1_68fdi"]
+[ext_resource type="Script" uid="uid://c3wmibrextsdf" path="res://player/player_particles/slam.gd" id="2_ac143"]
 
 [node name="slam" type="Sprite2D" unique_id=870829393]
 self_modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)

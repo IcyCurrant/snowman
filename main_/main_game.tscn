@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bvbutntqgn6o3"]
 
-[ext_resource type="PackedScene" uid="uid://w1nrwyudsxdi" path="res://player/player.tscn" id="1_yx7mw"]
+[ext_resource type="PackedScene" uid="uid://w1nrwyudsxdi" path="res://player/base_player/player.tscn" id="1_yx7mw"]
 [ext_resource type="Script" uid="uid://w6r7vdkluap" path="res://player/camera.gd" id="2_6bm6p"]
-[ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://levels_/world.tscn" id="2_ykeeq"]
-[ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://main_/enemy_manager.gd" id="4_6bm6p"]
+[ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://background and foregrounds/scenes/world.tscn" id="2_ykeeq"]
+[ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://singletons/enemy_manager.gd" id="4_6bm6p"]
+[ext_resource type="PackedScene" uid="uid://o11ixdx3jk1x" path="res://background and foregrounds/scenes/background.tscn" id="5_g1v4f"]
 
 [sub_resource type="Environment" id="Environment_ihtk1"]
 background_mode = 3
@@ -49,5 +50,8 @@ color = Color(0.9100639, 0.99975604, 0.9999997, 1)
 rotation = -1.0053097
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" parent="." unique_id=1075938226 instance=ExtResource("5_g1v4f")]
+position = Vector2(0, -40)
 
 [connection signal="timeout" from="enemy_manager/frequency" to="enemy_manager" method="_on_frequency_timeout"]

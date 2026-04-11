@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs45fra7k5g45"
-path="res://.godot/imported/slam.png-d7d5133de0d9810eb0fb7f5a76362d11.ctex"
+uid="uid://c312e8apwvjyh"
+path="res://.godot/imported/elf_copter_sheet.png-370f331eae5094e6f8d93e85a253aa70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slam.png"
-dest_files=["res://.godot/imported/slam.png-d7d5133de0d9810eb0fb7f5a76362d11.ctex"]
+source_file="res://assets/temp_/elf_copter_sheet.png"
+dest_files=["res://.godot/imported/elf_copter_sheet.png-370f331eae5094e6f8d93e85a253aa70.ctex"]
 
 [params]
 

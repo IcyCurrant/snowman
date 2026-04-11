@@ -29,6 +29,19 @@ version_control/plugin_name="godot-git-plugin"
 
 enabled=PackedStringArray("res://addons/layer_namer/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "gray",
+"res://background and foregrounds/": "green",
+"res://enemies/": "red",
+"res://misc_scenes/": "gray",
+"res://player/": "blue",
+"res://projectiles/": "orange",
+"res://shaders/": "green",
+"res://singletons/": "orange"
+}
+
 [input]
 
 left={

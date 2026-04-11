@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://d0x3mry2sfwje"]
 
 [ext_resource type="Texture2D" uid="uid://demd4u2i2argi" path="res://assets/temp_/temp_tileset_.png" id="1_wj7pr"]
-[ext_resource type="Texture2D" uid="uid://8w8ii53xgtqw" path="res://assets/pixil-frame-0 (1).png" id="2_cgjkd"]
+[ext_resource type="Texture2D" uid="uid://8w8ii53xgtqw" path="res://assets/temp_/tree_temp.png" id="2_cgjkd"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cgjkd"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -75,6 +75,7 @@ tile_map_data = PackedByteArray("AAD7//7/AAAAAAAAAAD6//7/AAABAAAAAAD5//7/AAAAAAA
 tile_set = SubResource("TileSet_tlwt5")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=38102613]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=331575584]
 modulate = Color(0.360322, 0.36032203, 0.360322, 1)

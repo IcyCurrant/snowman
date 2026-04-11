@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://w1nrwyudsxdi"]
 
-[ext_resource type="Script" uid="uid://dsfx6j27cgilt" path="res://player/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://dldb4o7jo232i" path="res://assets/hat.png" id="2_g1dw6"]
-[ext_resource type="Texture2D" uid="uid://bu0ycb0cowcvs" path="res://assets/snowman.png" id="3_yw30f"]
-[ext_resource type="Texture2D" uid="uid://85b6m7t35l20" path="res://assets/snowball.png" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://dsfx6j27cgilt" path="res://player/base_player/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dldb4o7jo232i" path="res://assets/temp_/hat.png" id="2_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://bu0ycb0cowcvs" path="res://assets/temp_/snowman.png" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://85b6m7t35l20" path="res://assets/temp_/snowball.png" id="4_yw30f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
 atlas = ExtResource("3_yw30f")

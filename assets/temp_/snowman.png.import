@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c312e8apwvjyh"
-path="res://.godot/imported/elf_copter_sheet.png-2f84ed6a0ef358ddb1ab0f71fba24786.ctex"
+uid="uid://bu0ycb0cowcvs"
+path="res://.godot/imported/snowman.png-a828a35885f387c520b11adacf49c790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/elf_copter_sheet.png"
-dest_files=["res://.godot/imported/elf_copter_sheet.png-2f84ed6a0ef358ddb1ab0f71fba24786.ctex"]
+source_file="res://assets/temp_/snowman.png"
+dest_files=["res://.godot/imported/snowman.png-a828a35885f387c520b11adacf49c790.ctex"]
 
 [params]
 

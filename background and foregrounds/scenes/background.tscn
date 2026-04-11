@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://o11ixdx3jk1x"]
+
+[ext_resource type="Texture2D" uid="uid://8w8ii53xgtqw" path="res://assets/temp_/tree_temp.png" id="1_oabld"]
+[ext_resource type="Script" uid="uid://bhx4eg1d3rksf" path="res://background and foregrounds/scripts/bg_layer1_trees.gd" id="1_xehqc"]
+[ext_resource type="Shader" uid="uid://qfqk12bjghyj" path="res://shaders/trees_sway.gdshader" id="2_splo0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eq6nc"]
+shader = ExtResource("2_splo0")
+
+[node name="bg layer 1" type="Node2D" unique_id=1387530355]
+script = ExtResource("1_xehqc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122786587]
+material = SubResource("ShaderMaterial_eq6nc")
+texture = ExtResource("1_oabld")

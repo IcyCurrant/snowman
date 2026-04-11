@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyb0ki5tyat5b"]
 
-[ext_resource type="Script" uid="uid://dn63frsd263e1" path="res://projectiles/projectile.gd" id="1_ighsu"]
-[ext_resource type="Texture2D" uid="uid://85b6m7t35l20" path="res://assets/snowball.png" id="2_ighsu"]
+[ext_resource type="Script" uid="uid://dn63frsd263e1" path="res://projectiles/player_projectile/projectile.gd" id="1_ighsu"]
+[ext_resource type="Texture2D" uid="uid://85b6m7t35l20" path="res://assets/temp_/snowball.png" id="2_ighsu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qxf0c"]
 radius = 4.0
