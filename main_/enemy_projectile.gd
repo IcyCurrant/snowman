@@ -18,3 +18,12 @@ func _physics_process(delta):
 	
 	if global_position.y > 100:
 		queue_free()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body:
+		if not body.is_in_group("enemy"):
+			queue_free()
+		if body.is_in_group("player"):
+			body.player_damage()
+			queue_free()

@@ -28,6 +28,8 @@ var slam_particle # instance of slam particle
 @onready var animation := $AnimationPlayer # animation player node used for stretch and squash
 @onready var ray_right := $ray1 #right raycast
 @onready var ray_left := $ray2 #left raycast
+#TEMP#
+@onready var particle_ded := $CPUParticles2D #death particles
 
 func _ready() -> void: 
 	#print(self.get_path()) #FOR DEBUGGING PURPOSES
@@ -35,6 +37,9 @@ func _ready() -> void:
 	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
+	if PlayerData.PlayerHP <= 0:
+		return
+	$Label.text = str(PlayerData.PlayerHP)
 	# Add the gravity.
 	if not is_on_floor():
 		vel_y = velocity.y
@@ -124,3 +129,12 @@ func create_slam_particles(pos: Vector2):
 			get_tree().root.add_child(slam_particle)
 		
 		await get_tree().create_timer(0.1,true).timeout
+
+func player_damage():
+	PlayerData.PlayerHP -= 10
+	if PlayerData.PlayerHP <= 0 and PlayerData.PlayerHP > -1000:
+		player.hide()
+		particle_ded.emitting = true
+		animation.play("hat_fall")
+		PlayerData.PlayerHP = -1000
+		return
