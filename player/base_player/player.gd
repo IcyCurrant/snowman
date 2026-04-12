@@ -11,6 +11,18 @@ var jump_vel := -300.0
 var slam := false 
 var vel_y : float
 
+#dash variables
+var dash_speed := 1000.0 # dashing speed
+var dash_max_dist := 300.0 #max dist to dash
+@export var dash_curve : Curve #curve to control dash speed
+var dash_cooldown := 1.0 # wait time before dashing again
+
+var is_dashing  := false
+var dash_start_pos := 0.0 #calculate if we reahced max dist
+var dash_dir = 0
+var dash_timer = 0
+
+
 #projectile vars
 var projectile_scene := preload("res://projectiles/player_projectile/projectile.tscn") #getting the projectile scene
 var projectile #instance of projectile
@@ -84,6 +96,22 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * deccn) #deccelaration
 	
+	if Input.is_action_just_pressed("dash") and direction and not is_dashing and dash_timer <= 0:
+		is_dashing = true
+		dash_start_pos = position.x
+		dash_dir = direction
+		dash_timer = dash_cooldown
+	
+	if is_dashing:
+		var current_dist = abs(position.x - dash_start_pos)
+		if current_dist >= dash_max_dist or is_on_wall():
+			is_dashing = false
+		else:
+			velocity.x = direction * dash_speed * dash_curve.sample(current_dist / dash_max_dist)
+			velocity.y = 0
+	
+	if dash_timer > 0:
+		dash_timer -= delta
 	if Input.is_action_pressed("attack") and firerate_timer.is_stopped():
 		fire_snowball()
 	

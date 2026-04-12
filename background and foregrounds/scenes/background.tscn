@@ -7,9 +7,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eq6nc"]
 shader = ExtResource("2_splo0")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ie6h4"]
+
 [node name="bg layer 1" type="Node2D" unique_id=1387530355]
 script = ExtResource("1_xehqc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122786587]
 material = SubResource("ShaderMaterial_eq6nc")
 texture = ExtResource("1_oabld")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D" unique_id=616338573]
+occluder = SubResource("OccluderPolygon2D_ie6h4")
