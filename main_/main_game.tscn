@@ -52,6 +52,6 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" parent="." unique_id=1075938226 instance=ExtResource("5_g1v4f")]
-position = Vector2(-328, -88)
+position = Vector2(-184, -104)
 
 [connection signal="timeout" from="enemy_manager/frequency" to="enemy_manager" method="_on_frequency_timeout"]

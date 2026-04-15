@@ -8,12 +8,12 @@ var deccn := 0.2
 #jump variables
 var jump_accn := 5.0
 var jump_vel := -300.0
-var slam := false 
+var slam := false
 var vel_y : float
 
 #dash variables
-var dash_speed := 1000.0 # dashing speed
-var dash_max_dist := 300.0 #max dist to dash
+var dash_speed := 1500.0 # dashing speed
+var dash_max_dist := 150.0 #max dist to dash
 @export var dash_curve : Curve #curve to control dash speed
 var dash_cooldown := 1.0 # wait time before dashing again
 
@@ -40,16 +40,18 @@ var slam_particle # instance of slam particle
 @onready var animation := $AnimationPlayer # animation player node used for stretch and squash
 @onready var ray_right := $ray1 #right raycast
 @onready var ray_left := $ray2 #left raycast
+
 #TEMP#
 @onready var particle_ded := $CPUParticles2D #death particles
 
 func _ready() -> void: 
-	#print(self.get_path()) #FOR DEBUGGING PURPOSES
+	print(self.get_path()) #FOR DEBUGGING PURPOSES
 	firerate_timer.wait_time = 0.1
 	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
 	if PlayerData.PlayerHP <= 0:
+		get_tree().change_scene_to_file("res://overworld/level_select_scene.tscn")
 		return
 	$Label.text = str(PlayerData.PlayerHP)
 	# Add the gravity.
@@ -72,17 +74,19 @@ func _physics_process(delta: float) -> void:
 # IF...IF I PRESS THE BUTTON ASSIGNED TO "SLAM" AND...AND PLAYER IS IN AIR AND
 # VELOCITY IS **NOT** NEGATIVE (is not jumping) THEN DO SLAM!!! 
 
-	if Input.is_action_just_pressed("slam") and velocity.y > 0: #not is_on_floor()
+	if Input.is_action_just_pressed("slam"): # and velocity.y > 0: #not is_on_floor()
 		# -ve jump velocity means the player is jumping
 		# ... vel.y > 0 check ensures that player is NOT jumping and is falling
 		#squash
 		#change velocity
 		#is_jumping = false
-		velocity.y *= jump_accn
+		velocity.y = abs(velocity.y)
+		velocity.y = move_toward(velocity.y, 1000, 1000 * jump_accn)
+		#velocity.y *= jump_accn
 		slam = true
 		#print(velocity.y) # FOR DEBUGGING PURPOSES
 	
-	var direction := Input.get_axis("left", "right") #horizontal movement
+	var direction := Input.get_axis("left", "right") #horizontal movementd
 	
 	if direction == 1:
 		player.flip_h = false
@@ -90,7 +94,8 @@ func _physics_process(delta: float) -> void:
 	elif direction == -1:
 		hat.flip_h = true
 		player.flip_h = true
-	if direction and not is_on_floor():
+		
+	if direction: #and not is_on_floor():
 		#move from current velocity to intended speed by accn
 		velocity.x = move_toward(velocity.x, direction * speed, speed * accn) #acceleration
 	else:
@@ -107,15 +112,19 @@ func _physics_process(delta: float) -> void:
 		if current_dist >= dash_max_dist or is_on_wall():
 			is_dashing = false
 		else:
-			velocity.x = direction * dash_speed * dash_curve.sample(current_dist / dash_max_dist)
-			velocity.y = 0
+			velocity.x = dash_dir * dash_speed * dash_curve.sample(current_dist / dash_max_dist)
+			if not slam:
+				velocity.y = 0
 	
 	if dash_timer > 0:
 		dash_timer -= delta
+	
+	move_and_slide()
+	
 	if Input.is_action_pressed("attack") and firerate_timer.is_stopped():
 		fire_snowball()
 	
-	move_and_slide()
+	
 
 func fire_snowball():
 	projectile = projectile_scene.instantiate()

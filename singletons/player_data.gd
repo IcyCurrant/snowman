@@ -7,7 +7,7 @@ var iFrames : float = 10.0
 var buffs : Dictionary = {}
 
 func _ready() -> void:
-	playerNode = get_node("/root/main_game/player")
+	playerNode = get_node_or_null("/root/main_game/player")
 	
 func _process(delta: float) -> void:
 	if playerNode:

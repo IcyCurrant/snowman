@@ -22,6 +22,7 @@ var start_y : float # og y position or in other words the base
 @onready var firerate_timer := $firerate_timer # firerate...how fast the enemy fires projectiles 
 @onready var player_detection := $player_detection # detect player
 @onready var sprite := $AnimatedSprite2D # sprite
+@onready var hitflash := $hitfash
 
 #bullet scene_reference
 @onready var enemy_projectile_scene = preload("res://projectiles/enemy_projectile/enemy_projectile.tscn")
@@ -131,6 +132,8 @@ func throw_snowball():
 	firerate_timer.start()
 
 func damage():
+	hitflash.play("hitflash")
 	enemy_hp -= 10
 	if enemy_hp <= 0:
 		queue_free()
+	

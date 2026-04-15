@@ -132,7 +132,7 @@ _data = {
 &"squash": SubResource("Animation_qjkh3")
 }
 
-[node name="player" type="CharacterBody2D" unique_id=701637466]
+[node name="player_platformer" type="CharacterBody2D" unique_id=701637466]
 script = ExtResource("1_onrkg")
 dash_curve = SubResource("Curve_d8q5o")
 

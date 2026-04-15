@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://do0mf03g428xv"]
+
+[ext_resource type="Texture2D" uid="uid://0rmpud031fpr" path="res://assets/temp_/land_elf.png" id="1_fbe1f"]
+[ext_resource type="Script" uid="uid://dbu8qnlcd5mxg" path="res://player/base_player/player_rpg.gd" id="1_vwrxe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbe1f"]
+radius = 8.0
+
+[node name="player_rpg" type="CharacterBody2D" unique_id=836959274]
+script = ExtResource("1_vwrxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2051261048]
+texture = ExtResource("1_fbe1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1349241949]
+shape = SubResource("CircleShape2D_fbe1f")
