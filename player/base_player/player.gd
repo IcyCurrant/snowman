@@ -45,13 +45,14 @@ var slam_particle # instance of slam particle
 @onready var particle_ded := $CPUParticles2D #death particles
 
 func _ready() -> void: 
+	PlayerData.PlayerHP = 75
 	print(self.get_path()) #FOR DEBUGGING PURPOSES
 	firerate_timer.wait_time = 0.1
 	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
 	if PlayerData.PlayerHP <= 0:
-		get_tree().change_scene_to_file("res://overworld/level_select_scene.tscn")
+		get_tree().call_deferred("change_scene_to_file","res://overworld/level_select_scene.tscn")
 		return
 	$Label.text = str(PlayerData.PlayerHP)
 	# Add the gravity.
@@ -175,3 +176,8 @@ func player_damage():
 		animation.play("hat_fall")
 		PlayerData.PlayerHP = -1000
 		return
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body:
+		player_damage()

@@ -6,4 +6,4 @@ func _ready() -> void:
 		var neighbouring_cells = get_surrounding_cells(filled_tile)
 		for neighbour: Vector2 in neighbouring_cells:
 			if get_cell_source_id(neighbour) == -1:
-				set_cell(neighbour, 0, Vector2i.ZERO)
+				set_cell(neighbour, 1, Vector2i.ZERO)

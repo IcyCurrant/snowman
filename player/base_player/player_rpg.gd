@@ -15,4 +15,4 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body:
 		if body.is_in_group("player_rpg"):
-			get_tree().change_scene_to_file("res://main_/main_game.tscn")
+			get_tree().call_deferred("change_scene_to_file","res://main_/main_game.tscn")

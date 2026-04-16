@@ -132,6 +132,10 @@ _data = {
 &"squash": SubResource("Animation_qjkh3")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8q5o"]
+radius = 7.0
+height = 22.0
+
 [node name="player_platformer" type="CharacterBody2D" unique_id=701637466]
 script = ExtResource("1_onrkg")
 dash_curve = SubResource("Curve_d8q5o")
@@ -188,3 +192,13 @@ angle_min = -400.0
 angle_max = 400.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=920976346]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=241094650]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_d8q5o")
+
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
