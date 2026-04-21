@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bvbutntqgn6o3"]
 
+[ext_resource type="Script" uid="uid://bc4p6jghy0s1j" path="res://main_/main_game.gd" id="1_qh4gi"]
 [ext_resource type="PackedScene" uid="uid://w1nrwyudsxdi" path="res://player/base_player/player.tscn" id="1_yx7mw"]
 [ext_resource type="Script" uid="uid://w6r7vdkluap" path="res://player/camera.gd" id="2_6bm6p"]
-[ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://background and foregrounds/scenes/world.tscn" id="2_ykeeq"]
+[ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://background and foregrounds/scenes/level1.tscn" id="2_ykeeq"]
 [ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://singletons/enemy_manager.gd" id="4_6bm6p"]
 [ext_resource type="PackedScene" uid="uid://o11ixdx3jk1x" path="res://background and foregrounds/scenes/background.tscn" id="5_g1v4f"]
+[ext_resource type="PackedScene" uid="uid://1q0lkur85djw" path="res://background and foregrounds/scenes/level_2.tscn" id="6_saxqq"]
 
 [sub_resource type="Environment" id="Environment_ihtk1"]
 background_mode = 3
@@ -14,10 +16,9 @@ glow_enabled = true
 fog_enabled = true
 
 [node name="main_game" type="Node2D" unique_id=324596264]
+script = ExtResource("1_qh4gi")
 
-[node name="TileMapLayer" parent="." unique_id=1212732074 instance=ExtResource("2_ykeeq")]
-z_index = 2
-position = Vector2(0, 50)
+[node name="level1" parent="." unique_id=284648964 instance=ExtResource("2_ykeeq")]
 
 [node name="player" parent="." unique_id=701637466 instance=ExtResource("1_yx7mw")]
 position = Vector2(-2, -144)
@@ -52,6 +53,9 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" parent="." unique_id=1075938226 instance=ExtResource("5_g1v4f")]
-position = Vector2(-184, -104)
+position = Vector2(-184, -160)
+
+[node name="level2" parent="." unique_id=582190384 instance=ExtResource("6_saxqq")]
+visible = false
 
 [connection signal="timeout" from="enemy_manager/frequency" to="enemy_manager" method="_on_frequency_timeout"]

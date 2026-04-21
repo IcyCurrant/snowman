@@ -36,6 +36,7 @@ func _preload_enemy_types(type: int):
 			enemyType = preload("res://enemies/types/elf_copter.tres")
 
 func _ready() -> void:
+	
 	#print(self.get_path())
 	
 	
@@ -64,6 +65,8 @@ func _ready() -> void:
 	add_to_group("enemy")
 	
 func _physics_process(delta: float) -> void:
+	if GameState.scene_change:
+		queue_free()
 	$Label.text = str(enemy_hp)
 	time += delta * frequency
 	

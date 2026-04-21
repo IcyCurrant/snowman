@@ -201,4 +201,11 @@ collision_mask = 16
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_d8q5o")
 
+[node name="Label2" type="Label" parent="." unique_id=712322576]
+offset_left = -16.0
+offset_top = -96.0
+offset_right = -15.0
+offset_bottom = -73.0
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

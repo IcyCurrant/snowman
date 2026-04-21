@@ -45,6 +45,7 @@ var slam_particle # instance of slam particle
 @onready var particle_ded := $CPUParticles2D #death particles
 
 func _ready() -> void: 
+	GameState.scene_change = false
 	PlayerData.PlayerHP = 75
 	print(self.get_path()) #FOR DEBUGGING PURPOSES
 	firerate_timer.wait_time = 0.1
@@ -52,9 +53,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if PlayerData.PlayerHP <= 0:
+		GameState.scene_change = true
 		get_tree().call_deferred("change_scene_to_file","res://overworld/level_select_scene.tscn")
 		return
 	$Label.text = str(PlayerData.PlayerHP)
+	$Label2.text = str(Engine.get_frames_per_second())
 	# Add the gravity.
 	if not is_on_floor():
 		vel_y = velocity.y
@@ -168,7 +171,9 @@ func create_slam_particles(pos: Vector2):
 		
 		await get_tree().create_timer(0.1,true).timeout
 
-func player_damage():
+func player_damage(instakill_ : bool):
+	if instakill_:
+		PlayerData.PlayerHP = -1000
 	PlayerData.PlayerHP -= 10
 	if PlayerData.PlayerHP <= 0 and PlayerData.PlayerHP > -1000:
 		player.hide()
@@ -180,4 +185,5 @@ func player_damage():
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body:
-		player_damage()
+		#print(body)
+		player_damage(false)

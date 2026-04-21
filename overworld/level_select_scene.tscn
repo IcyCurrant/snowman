@@ -42,14 +42,25 @@ z_index = 2
 [node name="Camera2D" type="Camera2D" parent="player_rpg" unique_id=1094139058]
 zoom = Vector2(3, 3)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=760363455]
+[node name="level1_selection" type="Sprite2D" parent="." unique_id=760363455]
 position = Vector2(98, -38)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_xuujw")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1546434446]
+[node name="L1" type="Area2D" parent="level1_selection" unique_id=1546434446]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=2050947048]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level1_selection/L1" unique_id=2050947048]
 shape = SubResource("CircleShape2D_es5je")
 
-[connection signal="body_entered" from="Sprite2D/Area2D" to="player_rpg" method="_on_area_2d_body_entered"]
+[node name="level2_selection" type="Sprite2D" parent="." unique_id=1626635386]
+position = Vector2(-63, -45.000004)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_xuujw")
+
+[node name="L2" type="Area2D" parent="level2_selection" unique_id=607418727]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level2_selection/L2" unique_id=1019759142]
+shape = SubResource("CircleShape2D_es5je")
+
+[connection signal="body_entered" from="level1_selection/L1" to="player_rpg" method="_on_l_1_body_entered"]
+[connection signal="body_entered" from="level2_selection/L2" to="player_rpg" method="_on_l_2_body_entered"]
