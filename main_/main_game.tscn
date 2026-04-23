@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://singletons/enemy_manager.gd" id="4_6bm6p"]
 [ext_resource type="PackedScene" uid="uid://o11ixdx3jk1x" path="res://background and foregrounds/scenes/background.tscn" id="5_g1v4f"]
 [ext_resource type="PackedScene" uid="uid://1q0lkur85djw" path="res://background and foregrounds/scenes/level_2.tscn" id="6_saxqq"]
+[ext_resource type="Texture2D" uid="uid://dldb4o7jo232i" path="res://assets/temp_/hat.png" id="8_2bm81"]
 
 [sub_resource type="Environment" id="Environment_ihtk1"]
 background_mode = 3
@@ -19,6 +20,9 @@ fog_enabled = true
 script = ExtResource("1_qh4gi")
 
 [node name="level1" parent="." unique_id=284648964 instance=ExtResource("2_ykeeq")]
+
+[node name="level2" parent="." unique_id=582190384 instance=ExtResource("6_saxqq")]
+visible = false
 
 [node name="player" parent="." unique_id=701637466 instance=ExtResource("1_yx7mw")]
 position = Vector2(-2, -144)
@@ -55,7 +59,9 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="Node2D" parent="." unique_id=1075938226 instance=ExtResource("5_g1v4f")]
 position = Vector2(-184, -160)
 
-[node name="level2" parent="." unique_id=582190384 instance=ExtResource("6_saxqq")]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1576409365]
+self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(120, -88)
+texture = ExtResource("8_2bm81")
 
 [connection signal="timeout" from="enemy_manager/frequency" to="enemy_manager" method="_on_frequency_timeout"]

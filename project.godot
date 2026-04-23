@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="snowman_remastered"
-run/main_scene="uid://c7fqxuuss4qoc"
+run/main_scene="uid://dg2rlq50gcw2x"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://main_/icon.svg"
+boot_splash/bg_color=Color(0.19908196, 0.29604828, 0.6418153, 1)
+config/icon="uid://btxgo20pier13"
 
 [autoload]
 
@@ -43,6 +44,10 @@ folder_colors={
 "res://shaders/": "green",
 "res://singletons/": "orange"
 }
+
+[global_group]
+
+instakill="used to instakill the player"
 
 [input]
 

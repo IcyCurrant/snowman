@@ -84,6 +84,8 @@ func _physics_process(delta: float) -> void:
 		#squash
 		#change velocity
 		#is_jumping = false
+		is_dashing = false
+		velocity.x = 0
 		velocity.y = abs(velocity.y)
 		velocity.y = move_toward(velocity.y, 1000, 1000 * jump_accn)
 		#velocity.y *= jump_accn
@@ -186,4 +188,6 @@ func player_damage(instakill_ : bool):
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body:
 		#print(body)
+		if body.is_in_group("instakill"):
+			player_damage(true)
 		player_damage(false)

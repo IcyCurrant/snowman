@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://85b6m7t35l20" path="res://assets/temp_/snowball.png" id="4_yw30f"]
 
 [sub_resource type="Curve" id="Curve_d8q5o"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.08171213), -3.164169, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.53846145, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.08171213), -2.8326812, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
 atlas = ExtResource("3_yw30f")
@@ -194,8 +194,8 @@ scale_amount_min = 0.5
 scale_amount_max = 0.5
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=920976346]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 2147483664
+collision_mask = 2147483664
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=241094650]
 position = Vector2(0, 5)

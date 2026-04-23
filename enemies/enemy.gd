@@ -139,4 +139,3 @@ func damage():
 	enemy_hp -= 10
 	if enemy_hp <= 0:
 		queue_free()
-	
