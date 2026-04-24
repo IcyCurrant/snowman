@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var end := $end_goal # reference to temporary end goal
+
 # --- STORES ALL LEVELS ---
 @onready var levels : Array[Node2D] = [
 	get_node("/root/main_game/level1"),
@@ -34,7 +36,7 @@ func _ready() -> void:
 		end_pos = Vector2i.ZERO
 	else:
 		end_pos = level.map_to_local(level.get_used_cells_by_id(0,Vector2i(0,2))[0]) #returns an array so we need only one element which is [0]]
-	$Sprite2D.global_position = end_pos
+	end.global_position = end_pos
 
 func _process(_delta: float) -> void:
 	

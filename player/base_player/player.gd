@@ -47,7 +47,7 @@ var slam_particle # instance of slam particle
 func _ready() -> void: 
 	GameState.scene_change = false
 	PlayerData.PlayerHP = 75
-	print(self.get_path()) #FOR DEBUGGING PURPOSES
+	#print(self.get_path()) #FOR DEBUGGING PURPOSES
 	firerate_timer.wait_time = 0.1
 	add_to_group("player")
 
@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 		#change velocity
 		#is_jumping = false
 		is_dashing = false
-		velocity.x = 0
+		velocity.x = -10
 		velocity.y = abs(velocity.y)
 		velocity.y = move_toward(velocity.y, 1000, 1000 * jump_accn)
 		#velocity.y *= jump_accn
@@ -176,7 +176,7 @@ func create_slam_particles(pos: Vector2):
 func player_damage(instakill_ : bool):
 	if instakill_:
 		PlayerData.PlayerHP = -1000
-	PlayerData.PlayerHP -= 10
+	PlayerData.PlayerHP -= 25
 	if PlayerData.PlayerHP <= 0 and PlayerData.PlayerHP > -1000:
 		player.hide()
 		particle_ded.emitting = true

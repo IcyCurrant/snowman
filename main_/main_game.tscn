@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://o11ixdx3jk1x" path="res://background and foregrounds/scenes/background.tscn" id="5_g1v4f"]
 [ext_resource type="PackedScene" uid="uid://1q0lkur85djw" path="res://background and foregrounds/scenes/level_2.tscn" id="6_saxqq"]
 [ext_resource type="Texture2D" uid="uid://dldb4o7jo232i" path="res://assets/temp_/hat.png" id="8_2bm81"]
+[ext_resource type="Texture2D" uid="uid://c55ofkrbsy4im" path="res://main_/icon.svg" id="9_kcpwe"]
 
 [sub_resource type="Environment" id="Environment_ihtk1"]
 background_mode = 3
@@ -15,6 +16,9 @@ tonemap_mode = 1
 tonemap_exposure = 1.25
 glow_enabled = true
 fog_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8qvu"]
+size = Vector2(64, 64)
 
 [node name="main_game" type="Node2D" unique_id=324596264]
 script = ExtResource("1_qh4gi")
@@ -63,5 +67,25 @@ position = Vector2(-184, -160)
 self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
 position = Vector2(120, -88)
 texture = ExtResource("8_2bm81")
+
+[node name="end_goal" type="StaticBody2D" parent="." unique_id=918589145 groups=["instakill"]]
+position = Vector2(1024, -128)
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="Sprite2D" type="Sprite2D" parent="end_goal" unique_id=1790117744]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_kcpwe")
+
+[node name="Label" type="Label" parent="end_goal" unique_id=1666942725]
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 163.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 12
+text = "TEMPORARY ENDING"
+
+[node name="exit_" type="CollisionShape2D" parent="end_goal" unique_id=479087144]
+shape = SubResource("RectangleShape2D_e8qvu")
 
 [connection signal="timeout" from="enemy_manager/frequency" to="enemy_manager" method="_on_frequency_timeout"]
