@@ -5,7 +5,8 @@ extends Node2D
 # --- STORES ALL LEVELS ---
 @onready var levels : Array[Node2D] = [
 	get_node("/root/main_game/level1"),
-	get_node("/root/main_game/level2")
+	get_node("/root/main_game/level2"),
+	get_node("/root/main_game/level3")
 ]
 #var inactive_levels : Array[Node2D] = []
 var current_level : Node2D # STORES CURRENT LEVaEL
@@ -43,3 +44,6 @@ func _process(_delta: float) -> void:
 	current_level.visible = true
 	level.collision_enabled = true
 	hurtboxes.collision_enabled = true
+
+func restart():
+	get_tree().call_deferred("reload_current_scene")

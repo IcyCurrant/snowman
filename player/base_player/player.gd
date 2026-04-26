@@ -67,11 +67,13 @@ func _physics_process(delta: float) -> void:
 	# Handle jump
 	if is_on_floor(): # and not is_jumping:
 		if slam:
+			velocity.y = jump_vel * 1.25
 			hitstop(0.05,0.5)
 			create_slam_particles(global_position)
 			animation.play("squash")
 			cam.shake(1.2)
 			slam = false
+			
 		else:
 			animation.play("jump_stretch")
 			velocity.y = jump_vel
@@ -181,13 +183,16 @@ func player_damage(instakill_ : bool):
 		player.hide()
 		particle_ded.emitting = true
 		animation.play("hat_fall")
-		PlayerData.PlayerHP = -1000
+		PlayerData.PlayerHP = -1500
 		return
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body:
-		#print(body)
+		#print(body)d
 		if body.is_in_group("instakill"):
+			PlayerData.completed_levels[GameState.level - 1] = true
+			print("Level complete!")
 			player_damage(true)
-		player_damage(false)
+		print(PlayerData.completed_levels)
+		player_damage(true)

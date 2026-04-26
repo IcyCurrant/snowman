@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://85b6m7t35l20" path="res://assets/temp_/snowball.png" id="4_yw30f"]
 
 [sub_resource type="Curve" id="Curve_d8q5o"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.53846145, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.08171213), -2.8326812, 0.0, 0, 0]
+_data = [Vector2(0, 0.43968868), 0.0, 0.0, 0, 0, Vector2(0.4700854, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.08171213), -2.8326812, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]

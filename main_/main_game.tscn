@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://w6r7vdkluap" path="res://player/camera.gd" id="2_6bm6p"]
 [ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://background and foregrounds/scenes/level1.tscn" id="2_ykeeq"]
 [ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://singletons/enemy_manager.gd" id="4_6bm6p"]
+[ext_resource type="PackedScene" uid="uid://ddt2yjmseoru1" path="res://background and foregrounds/scenes/level_3.tscn" id="4_e8qvu"]
 [ext_resource type="PackedScene" uid="uid://o11ixdx3jk1x" path="res://background and foregrounds/scenes/background.tscn" id="5_g1v4f"]
 [ext_resource type="PackedScene" uid="uid://1q0lkur85djw" path="res://background and foregrounds/scenes/level_2.tscn" id="6_saxqq"]
 [ext_resource type="Texture2D" uid="uid://dldb4o7jo232i" path="res://assets/temp_/hat.png" id="8_2bm81"]
@@ -26,6 +27,9 @@ script = ExtResource("1_qh4gi")
 [node name="level1" parent="." unique_id=284648964 instance=ExtResource("2_ykeeq")]
 
 [node name="level2" parent="." unique_id=582190384 instance=ExtResource("6_saxqq")]
+visible = false
+
+[node name="level3" parent="." unique_id=109224490 instance=ExtResource("4_e8qvu")]
 visible = false
 
 [node name="player" parent="." unique_id=701637466 instance=ExtResource("1_yx7mw")]
