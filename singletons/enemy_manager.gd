@@ -15,7 +15,7 @@ func _ready() -> void:
 	freq.wait_time = 1.2
 
 func _on_frequency_timeout() -> void:
-	enemy_type_ = randi_range(0,1)
+	enemy_type_ = randi_range(0,2)
 	enemy = enemy_scene.instantiate()
 	enemy.num = enemy_type_
 	enemy.global_position = global_position

@@ -35,14 +35,14 @@ enabled=PackedStringArray("res://addons/layer_namer/plugin.cfg")
 
 folder_colors={
 "res://assets/": "gray",
-"res://background and foregrounds/": "green",
 "res://enemies/": "red",
-"res://misc_scenes/": "gray",
+"res://levels/": "green",
 "res://overworld/": "green",
 "res://player/": "blue",
 "res://projectiles/": "orange",
 "res://shaders/": "green",
-"res://singletons/": "orange"
+"res://singletons/": "orange",
+"res://ui_/": "gray"
 }
 
 [global_group]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyTypes" format=3 uid="uid://csu1vdtl4m2as"]
 
 [ext_resource type="Script" uid="uid://yrfrbc4ttabg" path="res://enemies/enemyTypes.gd" id="1_ygh31"]
-[ext_resource type="Texture2D" uid="uid://0rmpud031fpr" path="res://assets/temp_/land_elf.png" id="2_8dkud"]
+[ext_resource type="Texture2D" uid="uid://0rmpud031fpr" path="res://assets/temp_/entities/land_elf.png" id="2_8dkud"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8afp8"]
 atlas = ExtResource("2_8dkud")

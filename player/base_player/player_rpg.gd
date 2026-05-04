@@ -3,11 +3,13 @@ extends CharacterBody2D
 var dir
 var speed := 3000
 @onready var level_icons : Array[Sprite2D] = [
-	$"../level1_selection",
-	$"../level2_selection",
-	$"../level3_selection"
+	$"../levels/level1_selection",
+	$"../levels/level2_selection",
+	$"../levels/level3_selection"
 ]
 
+@onready var trail_scene := preload("res://player/player_particles/trail.tscn")
+var trail
 func _ready() -> void:
 	global_position = PlayerData.rpg_pos
 	print(self.get_path())
@@ -22,6 +24,9 @@ func _process(delta: float) -> void:
 	dir = Input.get_vector("left", "right", "up", "down").normalized()
 	
 	velocity = dir * speed * delta
+	
+	#_create_particles()
+	
 	move_and_slide()
 
 func _on_l_2_body_entered(body: Node2D) -> void:
@@ -43,3 +48,8 @@ func _on_l_3_body_entered(body: Node2D) -> void:
 		if body.is_in_group("player_rpg"):
 			GameState.level = 3
 			get_tree().call_deferred("change_scene_to_file","res://main_/main_game.tscn")
+
+func _create_particles():
+	trail = trail_scene.instantiate()
+	trail.global_position = global_position 
+	get_tree().root.add_child(trail)

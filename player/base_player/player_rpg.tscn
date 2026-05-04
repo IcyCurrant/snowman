@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://do0mf03g428xv"]
 
-[ext_resource type="Texture2D" uid="uid://0rmpud031fpr" path="res://assets/temp_/land_elf.png" id="1_fbe1f"]
+[ext_resource type="Texture2D" uid="uid://0rmpud031fpr" path="res://assets/temp_/entities/land_elf.png" id="1_fbe1f"]
 [ext_resource type="Script" uid="uid://dbu8qnlcd5mxg" path="res://player/base_player/player_rpg.gd" id="1_vwrxe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fbe1f"]

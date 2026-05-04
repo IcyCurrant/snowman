@@ -34,43 +34,62 @@ func _preload_enemy_types(type: int):
 			enemyType = preload("res://enemies/types/elf_land_.tres")
 		1: # helicopter
 			enemyType = preload("res://enemies/types/elf_copter.tres")
+		2: # bush
+			enemyType = preload("res://enemies/types/bush.tres")
 
 func _ready() -> void:
 	
-	#print(self.get_path())
-	
+	#print(self.get_path()) # FOR DEBUGGING PURPOSES
 	
 	player_detection.rotation_degrees = 10.0 # set player detection raycat rotation to 10 degrees
+	# bruh "raycat" :sob: I'm crine
 	
+	# FOR FLYING ENEMY
+	#===================================#
 	amplitude = randf_range(20.0, 30.0) # randomise amplitude
 	frequency = randf_range(2.0,4.0) # randomise frequesncy of oscillation
+	#===================================#
 	
-	start_y = position.y # set base y postition to spawn position
-	if dir == 0:
+	start_y = position.y # set base y postition to spawn position\
+	
+	# 1 => right
+	# 2 => left
+	
+	"""
+	I hope this is a comment...I just learnt this is in python too
+	eh either way I'm still using "#" :3
+	"""
+	
+	if dir == 0: #to avoid ambiguity...imagine enemies staring at you instead of attacking the player lmfao
 		dir = 1
 	
 	if dir == 1:
 		player_detection.rotation_degrees = 10
 	else:
 		player_detection.rotation_degrees = 140
+
 	_preload_enemy_types(num) # randomise enemy type based on its "id"
 	
 	enemyType = enemyType.duplicate(true) # set resource to unique (recursive)
 	
-	speed = enemyType.speed
-	enemy_hp = enemyType.enemy_hp
-	firerate_timer.wait_time = enemyType.firerate
-	sprite.sprite_frames = enemyType.sprite_frames
+	#generic initialisation
+	speed = enemyType.speed # speed
+	enemy_hp = enemyType.enemy_hp # pretty self explanatory imo
+	firerate_timer.wait_time = enemyType.firerate # firerate (incase enemy shoots bullets)
+	sprite.sprite_frames = enemyType.sprite_frames #texture
 	
 	add_to_group("enemy")
 	
 func _physics_process(delta: float) -> void:
-	if GameState.scene_change:
-		queue_free()
-	$Label.text = str(enemy_hp)
-	time += delta * frequency
 	
-	sprite.play("default")
+	if GameState.scene_change: #if level is completed or player ded delete all clones of enemies
+		queue_free()
+	
+	$Label.text = str(enemy_hp) #DEBUG....displays enemy hp in a label
+	
+	time += delta * frequency #for flying enemy's amplitude
+	
+	sprite.play("default") # will be revamped in later updates
 	
 	if dir == -1:
 		sprite.flip_h = true
@@ -82,17 +101,16 @@ func _physics_process(delta: float) -> void:
 	elif right.is_colliding():
 		dir = -1
 	
-	if num == 0: #for land enemies
+	if num == 0 or num == 2: #for land enemies
 		
 		if not is_on_floor(): #basic gravity
 			velocity += get_gravity() * delta
 			
 		position.x += dir * speed * delta
 		
-	else: #for flying enemies
-		#print($collArea.get_overlapping_bodies())
-		 
+	elif num == 1: #for flying enemies
 		
+		#print($collArea.get_overlapping_bodies())
 			
 		#sprite.offset.x = 8
 		if dir == -1:
@@ -134,7 +152,7 @@ func throw_snowball():
 	get_tree().root.add_child(enemy_projectile)
 	firerate_timer.start()
 
-func damage():
+func damage(): # does NOT work for some reason :/
 	hitflash.play("hitflash")
 	enemy_hp -= 10
 	if enemy_hp <= 0:

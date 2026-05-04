@@ -1,15 +1,73 @@
-[gd_scene format=3 uid="uid://bvbutntqgn6o3"]
+[gd_scene format=4 uid="uid://bvbutntqgn6o3"]
 
 [ext_resource type="Script" uid="uid://bc4p6jghy0s1j" path="res://main_/main_game.gd" id="1_qh4gi"]
 [ext_resource type="PackedScene" uid="uid://w1nrwyudsxdi" path="res://player/base_player/player.tscn" id="1_yx7mw"]
 [ext_resource type="Script" uid="uid://w6r7vdkluap" path="res://player/camera.gd" id="2_6bm6p"]
-[ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://background and foregrounds/scenes/level1.tscn" id="2_ykeeq"]
+[ext_resource type="Shader" uid="uid://qfqk12bjghyj" path="res://shaders/trees_sway.gdshader" id="2_ty2x5"]
+[ext_resource type="PackedScene" uid="uid://d0x3mry2sfwje" path="res://levels/scenes/temp_indv_levels/level1.tscn" id="2_ykeeq"]
 [ext_resource type="Script" uid="uid://cx72d2g1k5vaj" path="res://singletons/enemy_manager.gd" id="4_6bm6p"]
-[ext_resource type="PackedScene" uid="uid://ddt2yjmseoru1" path="res://background and foregrounds/scenes/level_3.tscn" id="4_e8qvu"]
-[ext_resource type="PackedScene" uid="uid://o11ixdx3jk1x" path="res://background and foregrounds/scenes/background.tscn" id="5_g1v4f"]
-[ext_resource type="PackedScene" uid="uid://1q0lkur85djw" path="res://background and foregrounds/scenes/level_2.tscn" id="6_saxqq"]
-[ext_resource type="Texture2D" uid="uid://dldb4o7jo232i" path="res://assets/temp_/hat.png" id="8_2bm81"]
+[ext_resource type="PackedScene" uid="uid://ddt2yjmseoru1" path="res://levels/scenes/temp_indv_levels/level_3.tscn" id="4_e8qvu"]
+[ext_resource type="PackedScene" uid="uid://1q0lkur85djw" path="res://levels/scenes/temp_indv_levels/level_2.tscn" id="6_saxqq"]
+[ext_resource type="Texture2D" uid="uid://85b6m7t35l20" path="res://assets/temp_/particles/misc/snowball.png" id="7_1gfhm"]
 [ext_resource type="Texture2D" uid="uid://c55ofkrbsy4im" path="res://main_/icon.svg" id="9_kcpwe"]
+[ext_resource type="Texture2D" uid="uid://8w8ii53xgtqw" path="res://assets/temp_/tilesets/tree_temp.png" id="11_1gfhm"]
+[ext_resource type="Texture2D" uid="uid://bdtt75raegekn" path="res://assets/temp_/tilesets/snow-tileset-pixilart.png" id="13_1umt4"]
+[ext_resource type="PackedScene" uid="uid://m165wu7snhhh" path="res://levels/scenes/level_/levels_.tscn" id="13_443oy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cynxg"]
+shader = ExtResource("2_ty2x5")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8yln2"]
+polygon = PackedVector2Array(0, -64, 30, 40, 6, 42, 8, 64, -8, 64, -6, 42, -30, 40)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybs7h"]
+texture = ExtResource("11_1gfhm")
+0:0/size_in_atlas = Vector2i(4, 8)
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_8yln2")
+
+[sub_resource type="TileSet" id="TileSet_xkvgr"]
+occlusion_layer_0/light_mask = 1
+sources/0 = SubResource("TileSetAtlasSource_ybs7h")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tmigf"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iobvx"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rp0j3"]
+texture = ExtResource("13_1umt4")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+1:1/0 = 0
+1:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_tmigf")
+0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_tmigf")
+0:0/0 = 0
+0:0/0/probability = 0.3
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_tmigf")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/probability = 0.3
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_iobvx")
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/probability = 0.3
+2:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_iobvx")
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_iobvx")
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.985507, -8, 8, -8, 8, 8, -8, 8, -8, -4.069412, -4, -8)
+4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_iobvx")
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -3.954761, 8, 8, -8, 8, -8, -8, 4.002124, -8)
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0okbh"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_rp0j3")
 
 [sub_resource type="Environment" id="Environment_ihtk1"]
 background_mode = 3
@@ -24,12 +82,27 @@ size = Vector2(64, 64)
 [node name="main_game" type="Node2D" unique_id=324596264]
 script = ExtResource("1_qh4gi")
 
-[node name="level1" parent="." unique_id=284648964 instance=ExtResource("2_ykeeq")]
+[node name="non_functional_level_manager" parent="." unique_id=1460949418 instance=ExtResource("13_443oy")]
+position = Vector2(-1088, 0)
 
-[node name="level2" parent="." unique_id=582190384 instance=ExtResource("6_saxqq")]
+[node name="foreground" type="TileMapLayer" parent="non_functional_level_manager" unique_id=333390860]
+material = SubResource("ShaderMaterial_cynxg")
+position = Vector2(8, 8)
+tile_map_data = PackedByteArray("AAAaAPP/AAAAAAAAAAAeAPP/AAAAAAAAAAAiAPP/AAAAAAAAAAA2APb/AAAAAAAAAABFAPn/AAAAAAAAAABjAPn/AAAAAAAAAABuAO//AAAAAAAAAAB2APr/AAAAAAAAAAB/APn/AAAAAAAAAAARAPL/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_xkvgr")
+
+[node name="base level" type="TileMapLayer" parent="non_functional_level_manager" unique_id=1758641800]
+tile_map_data = PackedByteArray("AAARAPf/AQAAAAAAAAASAPf/AQAEAAAAAAA=")
+tile_set = SubResource("TileSet_0okbh")
+
+[node name="temp_level_manager" type="Node2D" parent="." unique_id=1351500923]
+
+[node name="level1" parent="temp_level_manager" unique_id=284648964 instance=ExtResource("2_ykeeq")]
+
+[node name="level2" parent="temp_level_manager" unique_id=582190384 instance=ExtResource("6_saxqq")]
 visible = false
 
-[node name="level3" parent="." unique_id=109224490 instance=ExtResource("4_e8qvu")]
+[node name="level3" parent="temp_level_manager" unique_id=109224490 instance=ExtResource("4_e8qvu")]
 visible = false
 
 [node name="player" parent="." unique_id=701637466 instance=ExtResource("1_yx7mw")]
@@ -46,6 +119,22 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("2_6bm6p")
 
+[node name="snow" type="CPUParticles2D" parent="player" unique_id=969449579]
+z_index = 1
+position = Vector2(-8, -256)
+amount = 30
+texture = ExtResource("7_1gfhm")
+speed_scale = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(200, 0)
+spread = 90.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+
 [node name="enemy_manager" type="Node2D" parent="." unique_id=1065594145]
 position = Vector2(-336, -136)
 script = ExtResource("4_6bm6p")
@@ -53,24 +142,18 @@ script = ExtResource("4_6bm6p")
 [node name="frequency" type="Timer" parent="enemy_manager" unique_id=378590322]
 autostart = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1335964648]
+[node name="lighting" type="Node2D" parent="." unique_id=28007591]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="lighting" unique_id=1335964648]
 environment = SubResource("Environment_ihtk1")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1392682900]
+[node name="CanvasModulate" type="CanvasModulate" parent="lighting" unique_id=1392682900]
 color = Color(0.9100639, 0.99975604, 0.9999997, 1)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1803291088]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="lighting" unique_id=1803291088]
 rotation = -1.0053097
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-
-[node name="Node2D" parent="." unique_id=1075938226 instance=ExtResource("5_g1v4f")]
-position = Vector2(-184, -160)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1576409365]
-self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
-position = Vector2(120, -88)
-texture = ExtResource("8_2bm81")
 
 [node name="end_goal" type="StaticBody2D" parent="." unique_id=918589145 groups=["instakill"]]
 position = Vector2(1024, -128)

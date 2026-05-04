@@ -1,12 +1,13 @@
 extends Node2D
 
 @onready var end := $end_goal # reference to temporary end goal
+@onready var level_dat := FileAccess.open("res://levels/level_/levels_data.txt", FileAccess.READ_WRITE)
 
 # --- STORES ALL LEVELS ---
 @onready var levels : Array[Node2D] = [
-	get_node("/root/main_game/level1"),
-	get_node("/root/main_game/level2"),
-	get_node("/root/main_game/level3")
+	get_node("/root/main_game/temp_level_manager/level1"),
+	get_node("/root/main_game/temp_level_manager/level2"),
+	get_node("/root/main_game/temp_level_manager/level3")
 ]
 #var inactive_levels : Array[Node2D] = []
 var current_level : Node2D # STORES CURRENT LEVaEL
@@ -38,6 +39,10 @@ func _ready() -> void:
 	else:
 		end_pos = level.map_to_local(level.get_used_cells_by_id(0,Vector2i(0,2))[0]) #returns an array so we need only one element which is [0]]
 	end.global_position = end_pos
+	
+	if level_dat:
+		level_dat.seek_end()
+		level_dat.store_string(str(level.get_used_cells()) + "\n")
 
 func _process(_delta: float) -> void:
 	

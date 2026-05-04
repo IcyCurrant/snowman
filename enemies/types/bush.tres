@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="EnemyTypes" format=3 uid="uid://b7wbt0axlamfc"]
+
+[ext_resource type="Script" uid="uid://yrfrbc4ttabg" path="res://enemies/enemyTypes.gd" id="1_fwf5w"]
+[ext_resource type="Texture2D" uid="uid://wq6yx3uhy5qm" path="res://assets/temp_/entities/bush.png" id="2_mq1py"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1rns"]
+atlas = ExtResource("2_mq1py")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txn1r"]
+atlas = ExtResource("2_mq1py")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpbv1"]
+atlas = ExtResource("2_mq1py")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g6abh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1rns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txn1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpbv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_fwf5w")
+speed = 50.0
+enemy_hp = 20.0
+firerate = 1.0
+sprite_frames = SubResource("SpriteFrames_g6abh")
+metadata/_custom_type_script = "uid://yrfrbc4ttabg"
