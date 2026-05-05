@@ -38,11 +38,8 @@ var slam_particle # instance of slam particle
 @onready var cam := $Camera2D #used for camera shake
 @onready var firerate_timer := $firerate #used to control firerate of snowballs
 @onready var animation := $AnimationPlayer # animation player node used for stretch and squash
-@onready var ray_right := $ray1 #right raycast
-@onready var ray_left := $ray2 #left raycast
-
-#TEMP#
-@onready var particle_ded := $CPUParticles2D #death particles
+@onready var ray_right := $raycasts/ray1 #right raycast
+@onready var ray_left := $raycasts/ray2 #left raycast
 
 func _ready() -> void: 
 	GameState.scene_change = false
@@ -52,12 +49,17 @@ func _ready() -> void:
 	add_to_group("player")
 
 func _physics_process(delta: float) -> void:
+	# handle shit that happens after player's death
+	# F to pay respect
+	# F
 	if PlayerData.PlayerHP <= 0:
 		GameState.scene_change = true
 		get_tree().call_deferred("change_scene_to_file","res://overworld/level_select_scene.tscn")
 		return
-	$Label.text = str(PlayerData.PlayerHP)
-	$Label2.text = str(Engine.get_frames_per_second())
+	
+	$debug_labels/health.text = str(PlayerData.PlayerHP)
+	$debug_labels/FPS.text = str(Engine.get_frames_per_second())
+	
 	# Add the gravity.
 	if not is_on_floor():
 		vel_y = velocity.y
@@ -172,14 +174,14 @@ func create_slam_particles(pos: Vector2):
 		if ray1:
 			slam_particle = slam_scene.instantiate()
 			slam_particle.global_position.x = posX  + ((i + 1) * 14)
-			slam_particle.global_position.y = posY
+			slam_particle.global_position.y = posY + 16
 			get_tree().root.add_child(slam_particle)
 		
 		#left particles
 		if ray2:
 			slam_particle = slam_scene.instantiate()
 			slam_particle.global_position.x = posX  - ((i + 1) * 14)
-			slam_particle.global_position.y = posY
+			slam_particle.global_position.y = posY + 16
 			slam_particle.flip_h = true
 			get_tree().root.add_child(slam_particle)
 		
@@ -189,9 +191,9 @@ func player_damage(instakill_ : bool):
 	if instakill_:
 		PlayerData.PlayerHP = -1000
 	PlayerData.PlayerHP -= 25
+	
 	if PlayerData.PlayerHP <= 0 and PlayerData.PlayerHP > -1000:
 		player.hide()
-		particle_ded.emitting = true
 		animation.play("hat_fall")
 		PlayerData.PlayerHP = -1500
 		return
@@ -206,7 +208,3 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 			player_damage(true)
 		print(PlayerData.completed_levels)
 		player_damage(true)
-
-
-func _on_animation_player_current_animation_changed(name: StringName) -> void:
-	print(name)

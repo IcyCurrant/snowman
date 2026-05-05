@@ -1,14 +1,52 @@
 [gd_scene format=3 uid="uid://dju4c3mkvy2i7"]
 
-[ext_resource type="Texture2D" uid="uid://cs45fra7k5g45" path="res://assets/temp_/particles/misc/slam.png" id="1_68fdi"]
+[ext_resource type="Texture2D" uid="uid://ydgm618hebg8" path="res://assets/temp_/particles/misc/slam_revamped.png" id="1_5ke1b"]
 [ext_resource type="Script" uid="uid://c3wmibrextsdf" path="res://player/player_particles/slam.gd" id="2_ac143"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ke1b"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_5ke1b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6666667, 0.6666667, 0.6666667, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o6cx3"]
+resource_name = "fade_away"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.6666667, 0.6666667, 0.6666667, 1), Color(0.6666667, 0.6666667, 0.6666667, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xelji"]
+_data = {
+&"RESET": SubResource("Animation_5ke1b"),
+&"fade_away": SubResource("Animation_o6cx3")
+}
 
 [node name="slam" type="Sprite2D" unique_id=870829393]
 self_modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-texture = ExtResource("1_68fdi")
+z_index = -1
+texture = ExtResource("1_5ke1b")
 script = ExtResource("2_ac143")
 
 [node name="fade" type="Timer" parent="." unique_id=1412841344]
@@ -19,6 +57,9 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1000779325]
 shape = SubResource("RectangleShape2D_5ke1b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=500702533]
+libraries/ = SubResource("AnimationLibrary_xelji")
 
 [connection signal="timeout" from="fade" to="." method="_on_fade_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
